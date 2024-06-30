@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { addRoom } from "../util/ApiFunctions";
 import RoomTypeSelector from "../common/RoomTypeSelector";
+import ExistingRoom from "./ExistingRoom";
 
 const Addroom=()=>{
     //console.log("Enter")
@@ -89,6 +90,7 @@ return(
             </div>
         </div>
      </section>
+     <ExistingRoom/>
    </>
 )
 }

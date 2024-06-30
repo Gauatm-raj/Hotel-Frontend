@@ -1,14 +1,35 @@
-import { useState } from 'react'
+
 import './App.css'
+import Home from './components/home/Home'
 import Addroom from './components/room/Addroom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { createBrowserRouter,RouterProvider,Route,Link } from 'react-router-dom'
+import EditRoom from './components/room/EditRoom'
+import ExistingRoom from './components/room/ExistingRoom'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  
+  const router= createBrowserRouter([
+    {
+      path:"/",
+      element:<Home/>
+    },
+    {
+      path:"/edit-room/:roomId",
+      element:<EditRoom/>
+    },
+    {
+      path:"/existing-rooms",
+      element:<ExistingRoom/>
+    }
+    
+    ])
+  
 
   return (
     <>
-     <Addroom/>
+     <RouterProvider router={router}/>
     </>
   )
 }
