@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { deleteRoom, getAllRooms } from '../util/ApiFunctions';
 import { useEffect } from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import RoomFilter from '../common/RoomFilter';
 import RoomPaginator from '../common/RoomPaginator';
-import {FaEdit, FaEye, FaTrashAlt} from "react-icons/fa"
+import {FaEdit, FaEye, FaPlus, FaTrashAlt} from "react-icons/fa"
 import { Link } from 'react-router-dom';
+import Addroom from './Addroom';
 
 export default function () {
     const[rooms,setRooms]=useState([]);
@@ -82,12 +83,20 @@ export default function () {
          ) : (
             <>
             <section className='container mt-5 mb-5'>
-                <div className='d-flex justify-content-center mt-5'>
+                <div className='d-flex justify-content-between mt-5'>
                     <h2>Existing Rooms</h2>
+                    
                 </div>
+
+                 <Row>
                 <Col md={6} className='mb-3 mb-md-0'>
                    <RoomFilter data={rooms} setFilteredData={setFilterdRooms}/>
                 </Col>
+
+                <Col md={6} className='d-flex justify-content-end'>
+                  <Link to={"/add-room"}> <FaPlus/>Add Room </Link>
+                </Col>
+                </Row>
                 <table className='table table-bordered table-hover'>
                     <thead>
                         <tr className='text-center'>
@@ -106,10 +115,10 @@ export default function () {
                                  <td className='gap-2'>
                                     <Link to={`/edit-room/${room.id}`}>
                                        <span className='btn btn-info btn-sm'> <FaEye/> </span>
-                                       <span className='btn btn-warning'></span>
+                                       <span className='btn btn-warning btn-sm'> <FaEdit/> </span>
                                        
                                         </Link>
-                                    <button > <FaEdit/> </button>
+                                    
                                     <button className='btn btn-danger btn-sm' onClick={()=>handleDelete(room.id)}> <FaTrashAlt/> Delete</button>
                                 </td>
                             </tr>

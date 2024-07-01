@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { createBrowserRouter,RouterProvider,Route,Link } from 'react-router-dom'
 import EditRoom from './components/room/EditRoom'
 import ExistingRoom from './components/room/ExistingRoom'
+import NavBar from './components/layout/NavBar'
+import Footer from './components/layout/Footer'
 
 function App() {
 
@@ -22,6 +24,10 @@ function App() {
     {
       path:"/existing-rooms",
       element:<ExistingRoom/>
+    },
+    {
+      path:"/add-room",
+      element:<Addroom/>
     }
     
     ])
@@ -30,6 +36,7 @@ function App() {
   return (
     <>
      <RouterProvider router={router}/>
+     
     </>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addRoom } from "../util/ApiFunctions";
 import RoomTypeSelector from "../common/RoomTypeSelector";
 import ExistingRoom from "./ExistingRoom";
+import { Link } from 'react-router-dom';
 
 const Addroom=()=>{
     //console.log("Enter")
@@ -81,16 +82,18 @@ return(
                             <img src={imagePre} className="mb-3" alt="Room Photo" style={{maxWidth:"400px", maxHeigth:"400px"}}/>
                         )}
                     </div>
+                   
+                    <button className="btn btn-outline-primary ml-5">Save Room</button>
             
                     <div className="d-grid d-md-flex mt-2">
-                        <button className="btn btn-outline-primary ml-5">Save Room</button>
+                    <Link to={"/existing-rooms"} className="btn btn-outline-info" >All Rooms</Link>
                     </div>
 
                 </form>
             </div>
         </div>
      </section>
-     <ExistingRoom/>
+    
    </>
 )
 }
