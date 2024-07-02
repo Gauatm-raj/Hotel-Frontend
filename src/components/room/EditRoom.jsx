@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getRoomById, updateRoom } from "../util/ApiFunctions";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import NavBar from "../layout/NavBar";
+import Footer from "../layout/Footer";
 
 export default function EditRoom() {
   const [room, setRoom] = useState({
@@ -66,6 +68,7 @@ export default function EditRoom() {
 
   return (
     <>
+      <NavBar/>
       <section className="container mt-5 mb-5">
         <div className="room justify-content-center">
           <div className="col-md-8 col-lf-6">
@@ -140,6 +143,7 @@ export default function EditRoom() {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

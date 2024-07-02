@@ -3,6 +3,8 @@ import { addRoom } from "../util/ApiFunctions";
 import RoomTypeSelector from "../common/RoomTypeSelector";
 import ExistingRoom from "./ExistingRoom";
 import { Link } from 'react-router-dom';
+import Footer from "../layout/Footer";
+import NavBar from "../layout/NavBar";
 
 const Addroom=()=>{
     //console.log("Enter")
@@ -41,14 +43,12 @@ const Addroom=()=>{
         e.preventDefault();
         try {
           const success= await addRoom(newRoom.photo,newRoom.roomType,newRoom.roomPrice);
-           if(success !== undefined){
+           //if(success !== undefined){
             setmsg("A new room added")
             setRoom({photo:null,roomType:"",roomPrice:""});
             setImage("");
             setError("");
-           }else{
-            setError("Error adding room")
-           }
+          
         } catch (error) {
            setError(error.message)  
         }
@@ -56,6 +56,7 @@ const Addroom=()=>{
 
 return(
    <>
+     <NavBar/>
      <section className="container mt-5 mb-5">
         <div className="room justify-content-center">
             <div className="col-md-8 col-lf-6">
@@ -93,7 +94,7 @@ return(
             </div>
         </div>
      </section>
-    
+     <Footer/>
    </>
 )
 }

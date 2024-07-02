@@ -7,6 +7,8 @@ import RoomPaginator from '../common/RoomPaginator';
 import {FaEdit, FaEye, FaPlus, FaTrashAlt} from "react-icons/fa"
 import { Link } from 'react-router-dom';
 import Addroom from './Addroom';
+import NavBar from '../layout/NavBar';
+import Footer from '../layout/Footer';
 
 export default function () {
     const[rooms,setRooms]=useState([]);
@@ -78,6 +80,7 @@ export default function () {
 
   return (
     <>
+      <NavBar/>
          {isLoading ? (
             <p>Loading.....</p>
          ) : (
@@ -130,6 +133,7 @@ export default function () {
             </section>
             </>
          )}
+         <Footer/>
     </>
   )
 }
