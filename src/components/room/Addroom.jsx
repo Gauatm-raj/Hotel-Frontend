@@ -73,7 +73,8 @@ return(
 
                     <div className="mb-3">
                         <label className="form-label" htmlFor="roomPrice">Room Price</label>
-                        <input onChange={handleRoomInputChange} className="form-control" value={newRoom.roomPrice} required id="roomPrice" name="roomPrice" type="number" />
+                        <input onChange={handleRoomInputChange} className="form-control" 
+                          value={newRoom.roomPrice} required id="roomPrice" name="roomPrice" type="number" />
                     </div>
 
                     <div className="mb-3">

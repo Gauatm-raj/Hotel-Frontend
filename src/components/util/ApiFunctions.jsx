@@ -27,8 +27,10 @@ export async function addRoom(photo,roomType,roomPrice){
 export async function getRoomType(){
     try {
         const response= await api.get("/rooms/room-types")
+        console.log("Fetched Room Types:", response.data); // Add logging here
         return response.data;
     } catch (error) {
+        console.error("Error fetching room types:", error); // Add logging here
         throw new Error("Error fetching room type")
     }
 }
@@ -74,5 +76,53 @@ export async function getRoomById(roomId){
        return result.data 
     } catch (error) {
         throw new Eroor("Error fetching room")
+    }
+}
+
+// saves a new booking to the database
+export async function bookRoom(roomId,booking){
+    try {
+        const response=await api.post(`/bookings/room/${roomId}/booking`,booking)
+        return response.data
+    } catch (error) {
+        if(error.response && error.response.data){
+            throw new Error(error.response.data)
+        }else{
+            throw new Error(`Error Booking Room :  ${error.message}`)
+        }
+    }
+}
+
+// get all bookings from db
+export async function getAllBooking(){
+   try {
+    const result= await api.get("/bookings/all-bookings")
+    return result.data;
+   } catch (error) {
+     throw new Error(`Error fetching bookins : ${error.message}`)
+   }
+}
+
+// get a booking from db with help of confirmation code
+export async function getBookingByConfirmationCode(confirmationCode){
+    try {
+        const result=await api.get(`/bookings/confirmation/${confirmationCode}`)
+        return result.data
+    } catch (e) {
+        if(e.response && e.response.data){
+            throw new Error(e.response.data)
+        }else{
+            throw new Error(`Error finding bookings : ${e.message}`)
+        }
+    }
+}
+
+// this method delete or cancel booking from db
+export async function cancelBooking(bookingId){
+    try {
+        const result=await api.delete(`/bookings/booking/${bookingId}/delete`)
+        return result.data;
+    } catch (error) {
+        throw new Error("Error in Cancel booking")
     }
 }

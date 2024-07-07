@@ -10,6 +10,8 @@ import NavBar from './components/layout/NavBar'
 import Footer from './components/layout/Footer'
 import RoomListing from './components/room/RoomListing'
 import Admin from './components/admin/Admin'
+import BookingForm from './components/booking/BookingForm'
+import BookingSuccess from './components/booking/BookingSuccess'
 
 function App() {
 
@@ -38,6 +40,13 @@ function App() {
     {
       path:"/admin",
       element:<Admin/>
+    },{
+      path:"/book-room/:roomId",
+      element:<BookingForm/>
+    },
+    {
+      path:"/booking-success",
+      element:<BookingSuccess/>
     }
     
     ])
@@ -45,6 +54,7 @@ function App() {
 
   return (
     <>
+    
      <RouterProvider router={router}/>
      
     </>

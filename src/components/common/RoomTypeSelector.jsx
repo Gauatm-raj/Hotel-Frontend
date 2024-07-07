@@ -8,6 +8,7 @@ const RoomTypeSelector=({handlRoomInputChange,newRoom})=>{
 
     useEffect(() => {
         getRoomType().then((data)=>{
+            console.log("Fetched Room Types in Component:", data); // Add logging here
             setRoomTypes(data)
         })
     }, [])
@@ -28,7 +29,7 @@ const RoomTypeSelector=({handlRoomInputChange,newRoom})=>{
 
     return(
         <>
-        {roomTypes.length>0 && (
+        {roomTypes.length>=0 && (
             <div>
                
                 <select id="roomType" name="roomType" value={newRoom.roomType} onChange={(e)=>{
@@ -41,9 +42,9 @@ const RoomTypeSelector=({handlRoomInputChange,newRoom})=>{
 
                     <option value={""}>Select a room type</option>
                     <option value={"Add New"}>Add New</option>
-                    {roomTypes.map((type,index)=>{
-                       return <option key={index} value={type}> {type}</option>
-                    })}
+                    {roomTypes.map((type,index)=>(
+                       <option key={index} value={type}> {type}</option>
+                    ))}
                 </select>
                 {showNewRoomTypeInput && (
                     <div className="input-group">
