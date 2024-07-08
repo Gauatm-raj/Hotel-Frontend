@@ -58,9 +58,9 @@ const BookingForm = () => {
   const calculatePayments = () => {
     const checkInDate = moment(booking.checkInDate);
     const checkOutDate = moment(booking.checkOutDate);
-    const diffInDays = checkOutDate.diff(checkInDate,"days");
+    const diffInDays = checkOutDate.diff(checkInDate, "days");
     const paymentPerDay = roomPrice ? roomPrice : 0;
-    console.log(diffInDays,paymentPerDay,diffInDays*paymentPerDay);
+    console.log(diffInDays, paymentPerDay, diffInDays * paymentPerDay);
     return diffInDays * paymentPerDay;
   };
 
@@ -98,26 +98,25 @@ const BookingForm = () => {
       setSubmit(true);
     }
     setIsValidate(true);
+    
   };
-  const handleBooking=async()=>{
+  const handleBooking = async () => {
     try {
-      const confirmationCode=await bookRoom(roomId,booking)
+      const confirmationCode = await bookRoom(roomId, booking);
       setSubmit(true);
-      navigate("/booking-success",{state:{message: confirmationCode}})
+      navigate("/booking-success", { state: { message: confirmationCode } });
     } catch (error) {
-      const errorMsg=error.message;
-      navigate("/booking-success",{state:{error:errorMsg}})
+      const errorMsg = error.message;
+      navigate("/booking-success", { state: { error: errorMsg } });
     }
-  }
-
- 
+  };
 
   return (
     <>
-      <NavBar/>
+      
       <div className="container mb-5">
         <Row>
-          <Col className="md-6">
+          <Col md={6}>
             <div className="card card-body mt-5">
               <h4 className="card card-title"> Reserve Room</h4>
               <Form noValidate validated={isvalidate} onSubmit={handleSubmit}>
@@ -159,7 +158,9 @@ const BookingForm = () => {
                   <legend>Loading Period</legend>
                   <Row>
                     <Col md={6} className="col-6">
-                      <FormLabel htmlFor="checkInDate">Check-In Date :</FormLabel>
+                      <FormLabel htmlFor="checkInDate">
+                        Check-In Date :
+                      </FormLabel>
 
                       <FormControl
                         required
@@ -175,10 +176,10 @@ const BookingForm = () => {
                       </FormControl.Feedback>
                     </Col>
 
-                    
-
                     <Col md={6} className="col-6">
-                      <FormLabel htmlFor="checkOutDate">Check-Out Date :</FormLabel>
+                      <FormLabel htmlFor="checkOutDate">
+                        Check-Out Date :
+                      </FormLabel>
 
                       <FormControl
                         required
@@ -193,13 +194,15 @@ const BookingForm = () => {
                         Please select a Check-Out Date
                       </FormControl.Feedback>
                     </Col>
-                    {errorMsg && <p className="error-message text-danger">{errorMsg}</p>}
+                    {errorMsg && (
+                      <p className="error-message text-danger">{errorMsg}</p>
+                    )}
                   </Row>
                 </fieldset>
 
-               <fieldset>
-                <legend>No. of Guest</legend>
-                <Row>
+                <fieldset>
+                  <legend>No. of Guest</legend>
+                  <Row>
                     <Col md={6} className="col-6">
                       <FormLabel htmlFor="noOfAdults">Adults :</FormLabel>
 
@@ -222,7 +225,7 @@ const BookingForm = () => {
                       <FormLabel htmlFor="noOfChildrens">Children :</FormLabel>
 
                       <FormControl
-                        required
+                        
                         type="number"
                         id="noOfChildrens"
                         name="noOfChildrens"
@@ -230,29 +233,35 @@ const BookingForm = () => {
                         placeholder="0"
                         onChange={handleInputChange}
                       />
-                    
                     </Col>
-                    </Row>
-                
-               </fieldset>
+                  </Row>
+                </fieldset>
 
-               <div className="form-group mt-2 mb-2">
-                <button type="submit" className="btn btn-hotel">Continue</button>
-               </div>
-
+                <div className="form-group mt-2 mb-2">
+                  <button type="submit" className="btn btn-hotel">
+                    Continue
+                  </button>
+                </div>
               </Form>
             </div>
           </Col>
 
           <Col md={6}>
             {isSubmit && (
-              <BookingSummary booking={booking} payments={calculatePayments}
-              isFormValid={isvalidate} onConfirm={handleBooking}/>
+             
+
+              <BookingSummary
+                booking={booking}
+                payments={calculatePayments}
+                isFormValid={isvalidate}
+                onConfirm={handleBooking}
+              />
             )}
+            
           </Col>
         </Row>
       </div>
-      <Footer/>
+      
     </>
   );
 };

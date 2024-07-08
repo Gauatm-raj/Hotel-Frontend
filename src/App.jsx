@@ -12,6 +12,8 @@ import RoomListing from './components/room/RoomListing'
 import Admin from './components/admin/Admin'
 import BookingForm from './components/booking/BookingForm'
 import BookingSuccess from './components/booking/BookingSuccess'
+import Booking from './components/booking/Bookings'
+import Checkout from './components/booking/Checkout'
 
 function App() {
 
@@ -42,11 +44,15 @@ function App() {
       element:<Admin/>
     },{
       path:"/book-room/:roomId",
-      element:<BookingForm/>
+      element:<Checkout/>
     },
     {
       path:"/booking-success",
       element:<BookingSuccess/>
+    },
+    {
+      path:"/existing-bookings",
+      element:<Booking/>
     }
     
     ])
