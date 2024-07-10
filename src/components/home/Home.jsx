@@ -5,6 +5,7 @@ import HeaderMain from '../layout/HeaderMain'
 import HotelServices from '../common/HotelServices'
 import Prallax from '../common/Prallax'
 import RoomCarousel from '../common/RoomCarousel'
+import RoomSearch from '../common/RoomSearch'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <HeaderMain/>
         
          <section className='container'>
+          <RoomSearch/>
           <RoomCarousel/>
           <Prallax/>
           <HotelServices/>

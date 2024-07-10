@@ -127,3 +127,15 @@ export async function cancelBooking(bookingId){
         throw new Error("Error in Cancel booking")
     }
 }
+
+// this function serach room which is available by giving dates
+export async function getAvailableRoomsByCheckInDateAndChcekOutDate(checkInDate,checkOutDate,roomType){
+    try {
+     const result= await api.get(
+        `/rooms/available-rooms?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&roomType=${roomType}`)
+     //console.log(result.data);
+     return result;
+    } catch (error) {
+      throw new Error(`Error fetching Available rooms : ${error.message}`)
+    }
+ }

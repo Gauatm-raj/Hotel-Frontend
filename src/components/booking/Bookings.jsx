@@ -35,7 +35,7 @@ const Bookings = () => {
       return (
     <>
     <NavBar/>
-     <section className='container' style={{backgroundColor:"whitesmoke"}}>
+     <section  style={{backgroundColor:"whitesmoke"}}>
         <Header title={"Existing Bookings"}/>
         {errorMsg && (<div className='text-danger'>{errorMsg}</div>)}
         {isLoading ? (<div>

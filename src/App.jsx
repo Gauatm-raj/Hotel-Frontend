@@ -14,6 +14,7 @@ import BookingForm from './components/booking/BookingForm'
 import BookingSuccess from './components/booking/BookingSuccess'
 import Booking from './components/booking/Bookings'
 import Checkout from './components/booking/Checkout'
+import FindBooking from './components/booking/FindBooking'
 
 function App() {
 
@@ -53,6 +54,10 @@ function App() {
     {
       path:"/existing-bookings",
       element:<Booking/>
+    },
+    {
+      path:"/find-booking",
+      element:<FindBooking/>
     }
     
     ])
